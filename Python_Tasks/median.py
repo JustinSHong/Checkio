@@ -5,8 +5,14 @@
 # instead the median becomes the average of the two numbers found in the middle. For this mission, you are given a non-empty array of natural numbers (X).
 # With it, you must separate the upper half of the numbers from the lower half and find the median.
 
+import statistics
+
+def find_median(data):
+	data = sorted(data)
+	return statistics.median(data)
+
 # Test Cases:
-median([1, 2, 3, 4, 5]) # 3
-median([3, 1, 2, 5, 3]) # 2
-median([1, 300, 2, 200, 1]) # 2
-median([3, 6, 20, 99, 10, 15]) # 12.5
+find_median([1, 2, 3, 4, 5]) # 3
+find_median([3, 1, 2, 5, 3]) # 3
+find_median([1, 300, 2, 200, 1]) # 2
+find_median([3, 6, 20, 99, 10, 15]) # 12.5
