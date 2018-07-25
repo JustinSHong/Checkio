@@ -5,6 +5,20 @@
 // When solving this task, do not change the order of the list.
 // Example: [1, 2, 3, 1, 3] 1 and 3 non-unique elements and result will be [1, 3, 1, 3].
 
+// SOLUTION #2
+function nonUniqueElements(data) {
+	const elCount = {}; // holds frequencies of each el in data
+	for (let el of data) {
+		// find frequency of each el
+		el in elCount ? elCount[el]++ : (elCount[el] = 1);
+	}
+	// filter out els that occur only once
+	return data.filter(el => {
+		return elCount[el] > 1;
+	});
+}
+
+// SOLUTION #1
 function nonUniqueElements(data) {
 	const result = []; // holds all non-unique ints
 	for (let i = 0; i < data.length; i++) {
