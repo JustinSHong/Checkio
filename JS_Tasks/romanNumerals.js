@@ -13,6 +13,38 @@
 // D	500 (quingenti)
 // M	1,000 (mille)
 
+function romanNumerals(number) {
+	const symbols = [
+		"I",
+		"IV",
+		"V",
+		"IX",
+		"X",
+		"XL",
+		"L",
+		"XC",
+		"C",
+		"CD",
+		"D",
+		"CM",
+		"M"
+	];
+	const values = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000];
+	const length = symbols.length;
+	let result = "";
+
+	for (let i = length - 1; i >= 0; i--) {
+		// all individual numerals are less than or equal to number
+		while (number - values[i] >= 0) {
+			number -= values[i];
+			result += symbols[i];
+			console.log(`symbol to be added: ${symbols[i]}`);
+		}
+	}
+	console.log(`result is ${result}`);
+	return result;
+}
+
 // Test Cases:
 romanNumerals(6); // 'VI'
 romanNumerals(76); // 'LXXVI'
