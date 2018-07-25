@@ -7,9 +7,17 @@
 
 import statistics
 
+# Solution 2
 def find_median(data):
-	data = sorted(data)
-	return statistics.median(data)
+	data.sort()
+	print(data)
+	midpoint = int(len(data) / 2)
+	return (data[midpoint] + data[~midpoint]) / 2
+
+# Solution 1
+# def find_median(data):
+# 	data = sorted(data)
+# 	return statistics.median(data)
 
 # Test Cases:
 find_median([1, 2, 3, 4, 5]) # 3
