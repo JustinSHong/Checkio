@@ -5,8 +5,18 @@
 # When solving this task, do not change the order of the list.
 # Example: [1, 2, 3, 1, 3] 1 and 3 non-unique elements and result will be [1, 3, 1, 3].
 
+def nonUniqueElements(data):
+	counter = {};
+	for num in data:
+		if num in counter:
+			counter[num] += 1
+		else:
+			counter[num] = 1
+	result = [x for x in data if counter[x] > 1]
+	return result
+
 # Test Cases:
-nonUniqueElements([1, 2, 3, 1, 3]); // [1, 3, 1, 3]
-nonUniqueElements([1, 2, 3, 4, 5]); // []
-nonUniqueElements([5, 5, 5, 5, 5]); // [5, 5, 5, 5, 5]
-nonUniqueElements([10, 9, 10, 10, 9, 8]); // [10, 9, 10, 10, 9]
+nonUniqueElements([1, 2, 3, 1, 3]) # [1, 3, 1, 3]
+nonUniqueElements([1, 2, 3, 4, 5]) # []
+nonUniqueElements([5, 5, 5, 5, 5]) # [5, 5, 5, 5, 5]
+nonUniqueElements([10, 9, 10, 10, 9, 8]) # [10, 9, 10, 10, 9]
