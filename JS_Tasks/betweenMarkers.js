@@ -12,15 +12,33 @@
 // Input: Three arguments. All of them are strings. The second and third arguments are the initial and final markers.
 // Output: A string.
 
+function betweenMarkers(str, start, end) {
+	let startIdx = str.indexOf(start);
+	let endIdx = str.indexOf(end);
+
+	if (startIdx < 0 && endIdx < 0) {
+		return str;
+	} else if (startIdx < 0 && endIdx >= 0) {
+		startIdx = 0;
+		return str.slice(0, endIdx);
+	} else if (startIdx >= 0 && endIdx < 0) {
+		endIdx = str.length;
+		return str.slice(startIdx + start.length, endIdx);
+	} else if (startIdx > endIdx) {
+		return "";
+	}
+
+	return str.slice(startIdx + start.length, endIdx);
+}
+
 // Test Cases:
-betweenMarkers("What is >apple<", ">", "<"); // 'apple')
-betweenMarkers("What is >apple<", ">", "<"); // 'apple')
+betweenMarkers("What is >apple<", ">", "<"); // 'apple'
 betweenMarkers(
 	"<head><title>My new site</title></head>",
 	"<title>",
 	"</title>"
-); // 'My new site')
-betweenMarkers("No[/b] hi", "[b]", "[/b]"); // 'No')
-betweenMarkers("No [b]hi", "[b]", "[/b]"); // 'hi')
-betweenMarkers("No hi", "[b]", "[/b]"); // 'No hi')
-betweenMarkers("No <hi>", ">", "<"); // '')
+); // 'My new site'
+betweenMarkers("No[/b] hi", "[b]", "[/b]"); // 'No'
+betweenMarkers("No [b]hi", "[b]", "[/b]"); // 'hi'
+betweenMarkers("No hi", "[b]", "[/b]"); // 'No hi'
+betweenMarkers("No <hi>", ">", "<"); // ''
