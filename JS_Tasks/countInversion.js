@@ -12,6 +12,19 @@
 // Input: A sequence as a tuple of integers.
 // Output: The inversion number as an integer.
 
+function countInversion(arr) {
+	let count = 0;
+	for (let i = 0; i < arr.length; i++) {
+		for (let j = i + 1; j <= arr.length - 1; j++) {
+			if (arr[i] > arr[j] && i < j) {
+				// inversion occurs when a number is greater than its neighbor
+				count++;
+			}
+		}
+	}
+	return count;
+}
+
 // Test Cases:
 countInversion([1, 2, 5, 3, 4, 7, 6]); // 3
 countInversion([0, 1, 2, 3]); // 0
