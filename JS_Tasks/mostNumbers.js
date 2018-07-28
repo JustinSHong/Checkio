@@ -6,6 +6,16 @@
 // Floating-point numbers are represented in computer hardware as base 2 (binary) fractions. So we should check the result with ±0.001 precision.
 // Think about how to work with an arbitrary number of arguments.
 
+function mostNumbers(numbers) {
+	let args = [...arguments]; // grab all numbers given to function
+	if (args.length === 0) return 0; // null check
+
+	let max = Math.max(...arguments); // find largest number
+	let min = Math.min(...arguments); // find smallest number
+
+	return max - min;
+}
+
 // Test Cases:
 mostNumbers(1, 2, 3); // 2
 mostNumbers(5, -5); // 10
