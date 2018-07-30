@@ -8,9 +8,19 @@
 // Watch out for cases when the number cannot be converted.
 // For example: "1A" cannot be converted with radix 9. For these cases your function should return -1.
 
+function numberRadix(n, radix) {
+	for (let char of n) {
+		if (isNaN(parseInt(char, radix))) {
+			return -1;
+		}
+	}
+	return parseInt(n, radix); // all chars are valid
+}
+
 // Test Cases:
 numberRadix("AF", 16); // 175
 numberRadix("101", 2); // 5
 numberRadix("101", 5); // 26
 numberRadix("Z", 36); // 35
 numberRadix("AB", 10); // -1
+numberRadix("ASD", 15); // -1
