@@ -4,6 +4,15 @@
 # Pay attention to the fact that not all of the fixes is necessary.
 # If a sentence already ends with a dot then adding another one will be a mistake.
 
+def correct_sentence(str):
+	if str[0] != str[0].upper():
+		str = str[0].upper() + str[1:]
+
+	if str[-1] != ".":
+		str += "."
+
+	return str
+
 # Test Cases:
 correct_sentence("greetings, friends"); # "Greetings, friends."
 correct_sentence("Greetings, friends"); # "Greetings, friends."
