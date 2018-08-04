@@ -9,6 +9,15 @@
 # which is 4th in a row and that means that the index of the second occurrence 
 # (and the answer to a question) is 3.
 
+def second_index(s, target):
+	count = 0;
+	for i in range(0, len(s)):
+		if s[i] == target:
+			count += 1
+		if count == 2:
+			return i
+	return None
+
 # Test Cases:
 second_index("sims", "s") # 3
 second_index("find the river", "e") # 12
