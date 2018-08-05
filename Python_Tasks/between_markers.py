@@ -17,19 +17,14 @@ import re
 def between_markers(s, start, end):
 
 	if not start in s and not end in s:
-		print("No markers present in", s)
 		return s
 	elif start in s and not end in s:
-		print("No end marker present in {}. Result is {}".format(s, s[s.index(start) + len(start):]))
 		return s[s.index(start) + len(start):]
 	elif not start in s and end in s:
-		print("No start marker present in {}. Result is {}".format(s, s[0:s.index(end)]))
 		return s[0:s.index(end)]
 	elif s.index(start) > s.index(end):
-		print("Start marker appears later than end marker in {}. Result is ''".format(s))
 		return ""
 	else:
-		print("Result is", s[s.index(start) + len(start):s.index(end)])
 		return s[s.index(start) + len(start):s.index(end)]
 
 # Test Cases:
