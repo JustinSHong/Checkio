@@ -12,6 +12,30 @@
 # Input: Three arguments. All of them are strings. The second and third arguments are the initial and final markers.
 # Output: A string.
 
+import re
+
+def between_markers(s, start, end):
+
+	if not start in s and not end in s:
+		print("No markers present in", s)
+		return s
+	elif start in s and not end in s:
+		print("No end marker present in {}. Result is {}".format(s, s[s.index(start) + len(start):]))
+		return s[s.index(start) + len(start):]
+	elif not start in s and end in s:
+		print("No start marker present in {}. Result is {}".format(s, s[0:s.index(end)]))
+		return s[0:s.index(end)]
+	elif s.index(start) > s.index(end):
+		print("Start marker appears later than end marker in {}. Result is ''".format(s))
+		return ""
+	else:
+		print("Result is", s[s.index(start) + len(start):s.index(end)])
+		return s[s.index(start) + len(start):s.index(end)]
+
 # Test Cases:
-between_markers('What is >apple<', '>', '<') # 'apple'
+between_markers('What is >apple<', '>', '<') # "apple"
+between_markers("<head><title>My new site</title></head>", "<title>", "</title>") # "My new site"
 between_markers('No[/b] hi', '[b]', '[/b]') # 'No'
+between_markers('No [b]hi', '[b]', '[/b]') # 'hi'
+between_markers('No hi', '[b]', '[/b]') # 'No hi'
+between_markers('No <hi>', '>', '<') # ''
