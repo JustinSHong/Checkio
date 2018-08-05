@@ -11,7 +11,21 @@
 # Output: The dictionary where the search words are the keys 
 # and values are the number of times when those words are occurring in a given text.
 
+def popular_words(text, targets):
+	words = text.lower().split()
+	counter = {t: 0 for t in targets}
+
+	for word in words:
+		if word in counter:
+			counter[word] += 1
+	return counter
+
 # Test Cases:
-popular_words('When I was One I had just begun When I was Two I was nearly new', ['i', 'was', 'three', 'near'])
+popular_words('''
+When I was One
+I had just begun
+When I was Two
+I was nearly new
+''', ['i', 'was', 'three', 'near'])
 # { 'i': 4, 'was': 3, 'three': 0, 'near': 0 }
 
