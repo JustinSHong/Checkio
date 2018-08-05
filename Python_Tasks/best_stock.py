@@ -3,6 +3,16 @@
 # Input: The dictionary where the market identifier code is a key and the value is a stock price.
 # Output: A string and the market identifier code.
 
+def best_stock(stocks):
+	price = 0
+	for stock in [*stocks]:
+		current = stocks[stock]
+		if current > price:
+			price = current
+			best = stock
+			
+	return best
+
 # Test Cases:
 best_stock({ 'CAC': 10.0, 'ATX': 390.2, 'WIG': 1.2 }) # 'ATX'
 best_stock({ 'CAC': 91.1, 'ATX': 1.01, 'TASI': 120.9 }) # 'TASI'
