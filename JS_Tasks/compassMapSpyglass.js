@@ -8,6 +8,40 @@
 // Input: Array with the objects placements.
 // Output: The length of the path.
 
+function navigation(seaside) {
+    // initialize coordinates [x, y]
+    let y = [0, 0];
+    let c = [0, 0];
+    let m = [0, 0];
+    let s = [0, 0];
+    // determine coordinates for y, c, m, s
+    seaside.forEach((row, index) => {
+        for (let i = 0; i < row.length; i++) {
+            if (row[i] == "Y") {
+                y[0] = i;
+                y[1] = index;
+            } else if (row[i] == "C") {
+                c[0] = i;
+                c[1] = index;
+            } else if (row[i] == "M") {
+                m[0] = i;
+                m[1] = index;
+            } else if (row[i] == "S") {
+                s[0] = i;
+                s[1] = index;
+            }
+        }
+    });
+
+    // distances are the maximum of the coordinate values between items
+    let yToC = Math.max(Math.abs(y[0] - c[0]), Math.abs(y[1] - c[1]));
+    let yToM = Math.max(Math.abs(y[0] - m[0]), Math.abs(y[1] - m[1]));
+    let yToS = Math.max(Math.abs(y[0] - s[0]), Math.abs(y[1] - s[1]));
+
+    // calculate total distance
+    return yToC + yToM + yToS;
+}
+
 // Test Cases:
 navigation([
     ["Y", 0, 0, 0, "C"],
