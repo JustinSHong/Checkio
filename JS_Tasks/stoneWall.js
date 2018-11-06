@@ -6,6 +6,7 @@
 // The width of the wall is the height of the columns of the array (multiline string).
 // If there are several such places, return the index of leftmost. Index starts from 0.
 
+// NAIVE SOLUTION
 function stoneWall(wall) {
     const split = wall.trim().split("\n");
     const hash = {};
@@ -33,6 +34,38 @@ function stoneWall(wall) {
         }
     });
     // if no thin spots exist return 0
+    return target;
+}
+
+// TRANSPOSE MATRIX
+function stoneWall(wall) {
+    const split = wall.trim().split("\n");
+    let thinScore = 0;
+    let hash = {};
+    // transpose matrix
+    const splitLayers = split.map(row => {
+        return row.split("");
+    });
+
+    const transposed = splitLayers[0].map((_, index) => {
+        return splitLayers.map(row => {
+            if (!hash[index] && row[index] == "0") {
+                hash[index] = 0;
+                hash[index]++;
+            } else if (hash[index] && row[index] == "0") {
+                hash[index]++;
+            }
+            return row[index];
+        });
+    });
+    let target = 0;
+    const columns = Object.keys(hash);
+    columns.forEach(c => {
+        if (thinScore < hash[c]) {
+            thinScore = hash[c];
+            target = parseInt(c, 10);
+        }
+    });
     return target;
 }
 
