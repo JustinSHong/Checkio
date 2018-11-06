@@ -14,7 +14,6 @@ function stoneWall(wall) {
     // score the thinness of each column in the wall and store the score in hash
     for (let i = 0; i < maxWidth; i++) {
         let layer = split[i];
-        console.log(`layer ${layer}`);
         for (let j = 0; j < maxLen; j++) {
             if (layer[j] == "0" && !hash[j]) {
                 hash[j] = 1;
