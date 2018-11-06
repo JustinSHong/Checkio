@@ -6,6 +6,37 @@
 // The width of the wall is the height of the columns of the array (multiline string).
 // If there are several such places, return the index of leftmost. Index starts from 0.
 
+function stoneWall(wall) {
+    const split = wall.trim().split("\n");
+    const hash = {};
+    const maxWidth = split.length;
+    const maxLen = split[0].length;
+    // score the thinness of each column in the wall and store the score in hash
+    for (let i = 0; i < maxWidth; i++) {
+        let layer = split[i];
+        console.log(`layer ${layer}`);
+        for (let j = 0; j < maxLen; j++) {
+            if (layer[j] == "0" && !hash[j]) {
+                hash[j] = 1;
+            } else if (layer[j] == "0" && hash[j]) {
+                hash[j]++;
+            }
+        }
+    }
+    // find the leftmost col with the larget thinScore
+    const columns = Object.keys(hash);
+    let thinScore = 0;
+    let target = 0;
+    columns.forEach((c, index) => {
+        if (thinScore < hash[c]) {
+            thinScore = hash[c];
+            target = parseInt(c, 10);
+        }
+    });
+    // if no thin spots exist return 0
+    return target;
+}
+
 // Test Cases:
 stoneWall(`
 ##########
