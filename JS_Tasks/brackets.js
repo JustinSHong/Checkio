@@ -28,6 +28,23 @@ function brackets(expression) {
     return previous.length === 0;
 }
 
+// solution using stack
+function brackets(expression) {
+    const stack = [];
+    const pairs = { "(": ")", "{": "}", "[": "]" };
+    const brackets = "(){}[]";
+    for (let c of expression) {
+        // skip non bracket chars
+        if (!brackets.includes(c)) continue;
+        // add opening brackets to the stack - anticipating finding a match
+        if ("({[".includes(c)) stack.push(c);
+        // when a closing bracket is found - compare it to the latest opening bracket in stack
+        else if (c !== dict[stack.pop()]) return false;
+    }
+    // if all brackets were scoped correctly, stack should be empty
+    return stack.length === 0;
+}
+
 // Test Cases:
 brackets("((5+3)*2+1)"); // true
 brackets("{[(3+1)+2]+}"); // true
