@@ -10,6 +10,24 @@
 // Input: An expression with different of types brackets as a string (unicode).
 // Output: A verdict on the correctness of the expression in boolean (True or False)
 
+function brackets(expression) {
+    const nonBrackets = /[0-9]|\+|\-|\*|\//g;
+    const parenthesis = /\(\)/g;
+    const curlyBrackets = /\{\}/g;
+    const squareBrackets = /\[\]/g;
+    let simplified = expression.replace(nonBrackets, "");
+    let previous = "";
+
+    while (previous.length !== simplified.length) {
+        previous = simplified;
+        simplified = simplified
+            .replace(parenthesis, "")
+            .replace(curlyBrackets, "")
+            .replace(squareBrackets, "");
+    }
+    return previous.length === 0;
+}
+
 // Test Cases:
 brackets("((5+3)*2+1)"); // true
 brackets("{[(3+1)+2]+}"); // true
