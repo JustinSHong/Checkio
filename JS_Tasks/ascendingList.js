@@ -5,6 +5,19 @@
 // Input: Iterable with ints.
 // Output: Bool.
 
+function isAscending(integers) {
+    if (integers.length === 0 || integers.length === 1) return true;
+    let prev = integers[0];
+
+    for (let i = 1; i < integers.length; i++) {
+        // previous int can not be greater than the current int
+        if (integers[i] < prev || integers[i] === prev) return false;
+        prev = integers[i];
+    }
+    // all integers are ascending
+    return true;
+}
+
 // Test Cases
 isAscending([-5, 10, 99, 123456]); // true
 isAscending([99]); // true
