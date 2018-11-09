@@ -5,6 +5,31 @@
 // - if the output hour is less than 10 - write '0' before it.
 // For example: '09:05'
 
+function timeConverter(dayTime) {
+    let result = "";
+    const time = dayTime.split(":");
+    const hours = time[0];
+    const minutes = time[1].slice(0, 2);
+
+    if (dayTime.includes("p.m.")) {
+        if (parseInt(hours, 10) >= 1 && parseInt(hours, 10) < 12) {
+            result += (parseInt(hours, 10) + 12).toString();
+        } else {
+            result += hours;
+        }
+    } else if (dayTime.includes("a.m")) {
+        if (parseInt(hours, 10) <= 10) {
+            result += "0" + hours;
+        } else if (parseInt(hours, 10) === 12) {
+            result += "00";
+        } else {
+            result += hours;
+        }
+    }
+    result += ":" + minutes;
+    return result;
+}
+
 // Test Cases:
 timeConverter("12:30 p.m."); // '12:30'
 timeConverter("9:00 a.m."); // '09:00'
