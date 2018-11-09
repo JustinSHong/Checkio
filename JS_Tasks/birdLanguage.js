@@ -6,6 +6,21 @@
 // Input: A bird phrase as a string.
 // Output: The translation as a string.
 
+function translate(phrase) {
+    let translated = "";
+    for (let i = 0; i < phrase.length; i++) {
+        if (phrase[i] === " ") translated += " ";
+        else if (!"aeiouy".includes(phrase[i])) {
+            translated += phrase[i];
+            i++;
+        } else {
+            translated += phrase[i];
+            i += 2;
+        }
+    }
+    return translated;
+}
+
 // Test Cases:
 translate("hieeelalaooo"); //"hello"
 translate("hoooowe yyyooouuu duoooiiine"); // "how you doin"
