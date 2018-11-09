@@ -8,6 +8,32 @@
 // You should process all commands and sum all digits which were taken from the stack ("PEEK" or "POP").
 // Initial value of the sum is 0 (zero).
 
+function digitStack(commands) {
+    let sum = 0;
+    const digits = [];
+    let digit = 0;
+
+    for (let i = 0; i < commands.length; i++) {
+        if (commands[i].includes("PUSH")) {
+            digit = commands[i].split(" ")[1];
+            digits.push(parseInt(digit, 10));
+        } else if (commands[i] == "POP") {
+            if (digits.length == 0) sum += 0;
+            else {
+                digit = digits.pop();
+                sum += digit;
+            }
+        } else if (commands[i] == "PEEK") {
+            if (digits.length == 0) sum += 0;
+            else {
+                digit = digits[digits.length - 1];
+                sum += digit;
+            }
+        }
+    }
+    return sum;
+}
+
 // Test Cases:
 digitStack([
     "PUSH 3",
